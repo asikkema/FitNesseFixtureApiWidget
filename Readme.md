@@ -11,7 +11,7 @@ When you have existing code where you want to write fitNesse test for you need t
   - copy the fitnesse-fixtureapi-widget-xxx-SNAPSHOT-jar-with-dependencies.jar into the directory where fitnesse is located under /plugins (create if it does not exist)  
   - create/edit plugins.properties (also where fitnesse is located) and add:  
 
-    WikiWidgets = org.fitnesse.widgets.fixtureapi.FixtureApiWidgetalbertsikkema:demo
+    WikiWidgets = org.fitnesse.widgets.fixtureapi.FixtureApiWidget
 
 **Usage**  
 After installation of the plugin add the following to a wiki page:
