@@ -35,7 +35,7 @@
 		</dependency>
 		<!-- Runtime dependencies -->
 		<dependency>
-			<groupId>com.google</groupId>
+			<groupId>com.google.code.javaparser</groupId>
 			<artifactId>javaparser</artifactId>
 			<version>1.0.8</version>
 		</dependency>
@@ -63,6 +63,14 @@
 			<releases>
 				<enabled>true</enabled>
 			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>javaparser</id>
+			<name>JavaParser Repository</name>
+			<url>http://javaparser.googlecode.com/svn/maven2</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
