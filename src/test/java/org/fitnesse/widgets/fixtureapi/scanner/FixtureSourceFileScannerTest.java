@@ -2,6 +2,7 @@ package org.fitnesse.widgets.fixtureapi.scanner;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 import java.util.List;
@@ -23,6 +24,10 @@ public class FixtureSourceFileScannerTest {
 		fixtureSourceFileScanner = new FixtureSourceFileScanner();
 	}
 
+	/**
+	 * Simple test where we want to test if at least one known Fixture class is found.
+	 * @throws Exception
+	 */
 	@Test
 	public void shouldCollectListOfFixtureSourcesAndFindThisTestBecauseItHasTheWordFixtureInTheName() throws Exception {
 		final File pom = getThisProjectsPom();
@@ -31,7 +36,14 @@ public class FixtureSourceFileScannerTest {
 
 		final ListMultimap<File, File> fixtureMultimap = fixtureSourceFileScanner.scanRecursive(testRoots);
 		assertThat(fixtureMultimap.keySet().size(), is(3));
-		final File fixtureDir = fixtureMultimap.keySet().iterator().next();
+		
+		File fixtureDir = null;
+		for (File fixtureDirTemp : fixtureMultimap.keySet()) {
+			if (fixtureDirTemp.getPath().endsWith("org/fitnesse/widgets/fixtureapi")) {
+				fixtureDir = fixtureDirTemp;
+			}
+		}
+		assertNotNull(fixtureDir);
 		assertThat(fixtureDir.isDirectory(), is(true));
 
 		final List<File> fixtures = fixtureMultimap.get(fixtureDir);
